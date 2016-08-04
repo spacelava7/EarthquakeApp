@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
-    android:padding="16dp"
+    android:padding="10dp"
     android:orientation="horizontal">
 
 
@@ -11,6 +11,11 @@
         android:id="@+id/label_magnitude"
         style="@style/BodyText"
         tools:text="@string/label_mag_text" />
+
+    <TextView
+        android:id="@+id/label_coordinates"
+        style="@style/BodyText"
+        tools:text="@string/label_coord"/>
 
     <TextView
         android:id="@+id/label_place"
@@ -26,7 +31,7 @@
     <TextView
         android:id="@+id/label_time"
         style="@style/BodyText"
-        tools:text="3:00 PM"/>
+        tools:text="@string/label_time"/>
 
 
 </LinearLayout>

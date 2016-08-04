@@ -24,4 +24,10 @@
     <color name="colorAccent">#10CAC9</color>
 
     <color name="colorBodyText">#505050</color>
+
+    <!-- magintudee scale colors -->
+    <color name="colorMagVeryHigh">#C03823</color>
+    <color name="colorMagHigh">#D93218</color>
+    <color name="colorMagMedium">#E13A20</color>
+    <color name="colorMagLow">#4A7BA7</color>
 </resources>

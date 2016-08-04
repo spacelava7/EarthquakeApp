@@ -5,7 +5,7 @@ package com.example.android.quakereport;
  */
 public class Earthquake {
 
-    private String mMagnitude;
+    private double mMagnitude;
     private String mPlace;
     private long mTimeInMilliseconds;
 
@@ -15,17 +15,17 @@ public class Earthquake {
      * @param place
      * @param timeMiliseconds  - time is given in millseconds using UNIX
      */
-    public Earthquake(String magnitude, String place, long timeMiliseconds ){
+    public Earthquake(Double magnitude, String place, long timeMiliseconds ){
         mMagnitude = magnitude;
         mPlace = place;
         mTimeInMilliseconds = timeMiliseconds;
     }
 
-    public String getmMagnitude(){
+    public Double getMagnitude(){
         return mMagnitude;
     }
 
-    public void setMagnitude(String magnitude){
+    public void setMagnitude(Double magnitude){
         mMagnitude  = magnitude;
     }
 
