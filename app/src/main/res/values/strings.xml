@@ -15,4 +15,7 @@
 -->
 <resources>
     <string name="app_name">Quake Report</string>
+    <string name="label_mag_text">5.0</string>
+    <string name="label_place">Taipei</string>
+    <string name="label_date">July 27, 2018</string>
 </resources>

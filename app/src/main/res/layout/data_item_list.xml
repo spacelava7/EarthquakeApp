@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:padding="16dp"
+    android:orientation="horizontal">
+
+
+    <TextView
+        android:id="@+id/label_magnitude"
+        style="@style/BodyText"
+        tools:text="@string/label_mag_text" />
+
+    <TextView
+        android:id="@+id/label_place"
+        style="@style/BodyText"
+        android:paddingRight="5dp"
+        tools:text="@string/label_place"/>
+
+    <TextView
+        android:id="@+id/label_date"
+        style="@style/BodyText"
+        tools:text="@string/label_date" />
+
+    <TextView
+        android:id="@+id/label_time"
+        style="@style/BodyText"
+        tools:text="3:00 PM"/>
+
+
+</LinearLayout>
