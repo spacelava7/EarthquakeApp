@@ -25,9 +25,15 @@
 
     <color name="colorBodyText">#505050</color>
 
-    <!-- magintudee scale colors -->
-    <color name="colorMagVeryHigh">#C03823</color>
-    <color name="colorMagHigh">#D93218</color>
-    <color name="colorMagMedium">#E13A20</color>
-    <color name="colorMagLow">#4A7BA7</color>
+
+    <!-- magnitude scale colors -->
+    <color name="colorMag910">#C03823</color>
+    <color name="colorMag78">#D93218</color>
+    <color name="colorMag56">#F4B559</color>
+    <color name="colorMag34">#1eb4b2</color>
+    <color name="colorMag12">#4A7BA7</color>
+    <color name="colorWhite">#ffffff</color>
+
+    <color name="textColorEarthquakeDetails">#a3a3a3</color>
+    <color name="textColorEarthquakeLocation">#2B3D4D</color>
 </resources>

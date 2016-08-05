@@ -15,17 +15,17 @@ public class Earthquake {
      * @param place
      * @param timeMiliseconds  - time is given in millseconds using UNIX
      */
-    public Earthquake(Double magnitude, String place, long timeMiliseconds ){
+    public Earthquake(double magnitude, String place, long timeMiliseconds ){
         mMagnitude = magnitude;
         mPlace = place;
         mTimeInMilliseconds = timeMiliseconds;
     }
 
-    public Double getMagnitude(){
+    public double getMagnitude(){
         return mMagnitude;
     }
 
-    public void setMagnitude(Double magnitude){
+    public void setMagnitude(double magnitude){
         mMagnitude  = magnitude;
     }
 

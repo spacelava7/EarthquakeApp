@@ -35,7 +35,6 @@ public class QueryUtils {
 
 
         try{
-            //TODO: PARSE JASON exceptions
             JSONObject jsonrootObject = new JSONObject(SAMPLE_JSON_RESPONSE);
             JSONArray earthquakeArray = jsonrootObject.getJSONArray("features");
 
@@ -44,8 +43,8 @@ public class QueryUtils {
                 JSONObject currentjsonObject = earthquakeArray.getJSONObject(i);
                 JSONObject properties =currentjsonObject.getJSONObject("properties");
 
-                Double mag = properties.getDouble("mag");
-                String place = properties.optString("place").toString();
+                double mag = properties.getDouble("mag");
+                String place = properties.getString("place");
                 long time = properties.getLong("time");
 
                 Earthquake earthquake = new Earthquake(mag, place, time);

@@ -9,29 +9,69 @@
 
     <TextView
         android:id="@+id/label_magnitude"
-        style="@style/BodyText"
+        android:textSize="14sp"
+        android:textColor="@color/colorWhite"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_gravity="center_vertical"
+        android:gravity="center"
+        android:layout_marginRight="8dp"
+        android:background="@drawable/magnitude_circle"
         tools:text="@string/label_mag_text" />
 
-    <TextView
-        android:id="@+id/label_coordinates"
-        style="@style/BodyText"
-        tools:text="@string/label_coord"/>
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:layout_marginLeft="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_weight="1"
+        android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/label_place"
-        style="@style/BodyText"
-        android:paddingRight="5dp"
-        tools:text="@string/label_place"/>
+        <TextView
+            android:id="@+id/label_coordinates"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="12sp"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:textColor="@color/textColorEarthquakeDetails"
+            tools:text="@string/label_coord"/>
 
-    <TextView
-        android:id="@+id/label_date"
-        style="@style/BodyText"
-        tools:text="@string/label_date" />
+        <TextView
+            android:id="@+id/label_place"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:maxLines="2"
+            android:textColor="@color/textColorEarthquakeLocation"
+            android:paddingRight="5dp"
+            tools:text="@string/label_place"/>
 
-    <TextView
-        android:id="@+id/label_time"
-        style="@style/BodyText"
-        tools:text="@string/label_time"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:layout_marginLeft="16dp"
+        android:layout_marginStart="16dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/label_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="12sp"
+            tools:text="@string/label_date" />
+
+        <TextView
+            android:id="@+id/label_time"
+            android:layout_gravity="end"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="@string/label_time"/>
+
+    </LinearLayout>
 
 
 </LinearLayout>

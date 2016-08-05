@@ -1,6 +1,8 @@
 package com.example.android.quakereport;
 
 import android.content.Context;
+import android.graphics.drawable.GradientDrawable;
+import android.support.v4.content.ContextCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -43,6 +45,10 @@ public class EarthquakeAdapter extends ArrayAdapter<Earthquake> {
         // Format the magnitude to show 1 decimal place
         String formattedMagnitude = formatMagnitude(currentEarthquake.getMagnitude());
         magnitudeView.setText(formattedMagnitude);
+        //set background
+        GradientDrawable magnitudeCircle = (GradientDrawable) magnitudeView.getBackground();
+        int magnitudeColor = getMagnitudeColor(currentEarthquake.getMagnitude());
+        magnitudeCircle.setColor(magnitudeColor);
 
         String originalLocation = currentEarthquake.getmPlace();
         String primaryLocation;
@@ -73,6 +79,7 @@ public class EarthquakeAdapter extends ArrayAdapter<Earthquake> {
         timeView.setText(formattedTime);
 
 
+
         return listView;
     }
 
@@ -95,6 +102,35 @@ public class EarthquakeAdapter extends ArrayAdapter<Earthquake> {
     private String formatMagnitude(double magnitude) {
         DecimalFormat magnitudeFormat = new DecimalFormat("0.0");
         return magnitudeFormat.format(magnitude);
+    }
+
+    //sets background color Id depending on the amount
+    private int getMagnitudeColor(double magnitude){
+        int magnitudeResourceColorId;
+        int magnitudeValue = (int) Math.floor(magnitude);
+
+        switch (magnitudeValue){
+            case 1: case 2:
+                magnitudeResourceColorId = R.color.colorMag12;
+                break;
+            case 3: case 4:
+                magnitudeResourceColorId = R.color.colorMag34;
+                break;
+            case 5: case 6:
+                magnitudeResourceColorId = R.color.colorMag56;
+                break;
+            case 7: case 8:
+                magnitudeResourceColorId = R.color.colorMag78;
+                break;
+            case  9:
+                magnitudeResourceColorId  = R.color.colorMag910;
+                break;
+            default:
+                magnitudeResourceColorId = R.color.colorMag910;
+                break;
+        }
+        //ContextCompat getColor() to convert the color resource ID into an actual integer color value
+        return ContextCompat.getColor(getContext(), magnitudeResourceColorId);
     }
 
 }
