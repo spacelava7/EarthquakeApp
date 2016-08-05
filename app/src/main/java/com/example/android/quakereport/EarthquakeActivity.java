@@ -17,8 +17,11 @@ package com.example.android.quakereport;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.EventLog;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -27,26 +30,25 @@ import android.widget.ListView;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.ArrayList;
 
 public class EarthquakeActivity extends AppCompatActivity {
 
     public static final String LOG_TAG = EarthquakeActivity.class.getName();
 
+    private static final String mREQUEST_URL =
+    "";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.earthquake_activity);
 
-        // Create a fake list of earthquake locations.
-       /* ArrayList<Earthquake> earthquakes = new ArrayList<>();
-        earthquakes.add(new Earthquake("5.0", "San Francisco", "Feb 2, 2017"));
-        earthquakes.add(new Earthquake("4.0", "London", "June 8, 2016"));
-        earthquakes.add(new Earthquake("6.4", "Tokyo", "July 12, 2016"));
-        earthquakes.add(new Earthquake("9.0", "Mexico City", "January 4, 2016"));
-        earthquakes.add(new Earthquake("3.0", "Moscow", "May 24, 2016"));
-        earthquakes.add(new Earthquake("8.8", "Rio de Janeiro", "July 17, 2016"));
-        earthquakes.add(new Earthquake("5.5", "Paris", "March 30, 2016")); */
         ArrayList<Earthquake> earthquakes = QueryUtils.extractEarthquakes();
 
 
@@ -74,5 +76,69 @@ public class EarthquakeActivity extends AppCompatActivity {
                 startActivity(earthquakeIntent);
             }
         });*/
+    }
+
+    private class EarthquakeAsyncTask extends AsyncTask<URL, Void, Void>{
+
+        @Override
+        protected void doInBackground(URL... urls){
+            //create URL
+            URL url = createURL(mREQUEST_URL);
+            String jsonResponse = "";
+
+            try{
+                jsonResponse = makeHTTPRequest(url);
+
+            } catch (IOException e){
+                Log.e(LOG_TAG, "IOException ", e);
+            }
+
+        }
+
+
+    }
+
+    private URL createURL(String stringURL){
+        URL url = null;
+        try{
+            url = new URL(stringURL);
+        } catch (MalformedURLException e){
+            Log.e(LOG_TAG, "Error creating URL", e);
+            return null;
+        }
+        return url;
+    }
+
+    /**
+     * Makes an HTTP request to the given URL
+     * @param url - given by the user
+     * @return jsonResponse - inputStream read the data from the URL with the provided request method in this
+     * case it is a GET method
+     * @throws IOException any error that might occure while connecting or reading the input streams
+     */
+    private String makeHTTPRequest(URL url ) throws IOException{
+        String jsonResponse = "";
+        HttpURLConnection urlConnection = null;
+        InputStream inputStream = null;
+
+        try{
+            //set up the http connection
+            urlConnection =  (HttpURLConnection) url.openConnection();
+            urlConnection.setRequestMethod("GET");
+            urlConnection.connect();
+            // handle the http connection
+
+        }catch (IOException e){
+            Log.e(LOG_TAG, "IOException", e);
+            return null;
+        } finally {
+
+            //if url connection is on must disconnect after obtaining the data
+            if (urlConnection != null){
+                urlConnection.disconnect();
+            }
+        }
+
+        return jsonResponse;
     }
 }
